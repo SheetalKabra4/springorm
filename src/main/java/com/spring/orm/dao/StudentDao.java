@@ -22,8 +22,8 @@ public class StudentDao {
         return student;
     }
 
-    //get the single data
-    public List<Student> getAllStudent(int studentId){
+    //get the all data
+    public List<Student> getAllStudent(){
         List<Student> students = this.hibernateTemplate.loadAll(Student.class);
         return students;
     }
