@@ -36,7 +36,11 @@ public class App
                 switch (input){
                     case 1:
                         //add a student
-                        Student student = new Student("Sheetal Press", "Mumbai Press");
+                        System.out.print("Enter student name:");
+                        String studentName = bf.readLine();
+                        System.out.print("Enter city name:");
+                        String cityName = bf.readLine();
+                        Student student = new Student(studentName, cityName);
                         int result = studentDao.insert(student);
                         System.out.println("Student values inserted with rows affected:"+result);
                         break;
@@ -49,17 +53,27 @@ public class App
                         break;
                     case 3:
                         //get details of single student
-                        Student studentDetails = studentDao.getStudent(15);
+                        System.out.print("Enter student id to get the details:");
+                        int studentIdToShow = Integer.parseInt(bf.readLine());
+                        Student studentDetails = studentDao.getStudent(studentIdToShow);
                         System.out.println(studentDetails.getId()+", "+studentDetails.getName()+", "+studentDetails.getCity());
                         break;
                     case 4:
                         //delete student
-                        studentDao.deleteStudent(14);
+                        System.out.print("Enter student id you want to delete:");
+                        int studentIdDelete = Integer.parseInt(bf.readLine());
+                        studentDao.deleteStudent(studentIdDelete);
                         System.out.println("Student has been deleted with id: 14");
                         break;
                     case 5:
                         //update student
-                        Student updateStudent = new Student(13,"Sheetal Presssss", "Mumbai Presssss");
+                        System.out.print("Enter student id to update");
+                        int studentIdToUpdate = Integer.parseInt(bf.readLine());
+                        System.out.print("Enter student name to update");
+                        String studentNameToUpdate = bf.readLine();
+                        System.out.print("Enter student city to update");
+                        String studentCityToUpdate = bf.readLine();
+                        Student updateStudent = new Student(studentIdToUpdate,studentNameToUpdate, studentCityToUpdate);
                         studentDao.updateStudent(updateStudent);
                         break;
                     case 6:
